@@ -3,6 +3,7 @@ import java.util.LinkedList;
 public class Parser {
 
   static boolean isDelim(char c) { // тру если пробел
+
     return c == ' ';
   }
 

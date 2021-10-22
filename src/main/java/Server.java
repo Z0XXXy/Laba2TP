@@ -1,10 +1,5 @@
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
-import javax.json.bind.JsonbConfig;
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import javax.json.bind.JsonbException;
+import java.io.BufferedReader;import java.io.BufferedWriter;import java.io.IOException;import java.io.InputStreamReader;import java.io.OutputStreamWriter;import java.net.ServerSocket;import javax.json.bind.Jsonb;import javax.json.bind.JsonbBuilder;import javax.json.bind.JsonbConfig;import java.net.Socket;import javax.json.bind.JsonbException;
+
 
 public class Server implements Runnable {
 
@@ -19,10 +14,12 @@ public class Server implements Runnable {
   private static final String enterMessage = "Enter a virazeniye:";
 
   public ServerSocket getServerSocket() {
+
     return serverSocket;
   }
 
   public void setServerSocket(ServerSocket serverSocket) {
+
     this.serverSocket = serverSocket;
   }
 
@@ -31,7 +28,7 @@ public class Server implements Runnable {
     this.jsonb = JsonbBuilder.create(new JsonbConfig());
   }
 
-  public void sendMessage(String message) throws JsonbException{
+  public void sendMessage(String message) throws JsonbException {
     try {
       out.write(jsonb.toJson(message));
       out.newLine();
@@ -41,7 +38,7 @@ public class Server implements Runnable {
     }
   }
 
-  public String getMessage() throws JsonbException{
+  public String getMessage() throws JsonbException {
     try {
       String json = in.readLine();
       String message = jsonb.fromJson(json, String.class);
